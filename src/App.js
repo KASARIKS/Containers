@@ -1,23 +1,36 @@
-import logo from './logo.svg';
 import './App.css';
+import ContainerList from './components/ContainerList';
+import React from 'react';
+
+// container counter
+let id = 0
 
 function App() {
+  // containers
+  const [conts, setConts] = React.useState([])
+
+  // adding container
+  function addContainer() {
+    if (id != 5) {
+      id++
+      setConts([...conts, { id: id }])
+    }
+  }
+
+  // deleting container
+  function remContainer() {
+    if (id != 0) {
+      setConts(conts.filter(el => id != el.id))
+      id--
+    }
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ContainerList conts={conts}/>
+      <button onClick={addContainer}>Append container</button>
+      <button onClick={remContainer}>Delete container</button>
+      <br></br>
     </div>
   );
 }

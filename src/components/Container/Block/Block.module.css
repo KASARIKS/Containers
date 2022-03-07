@@ -1,0 +1,8 @@
+.block {
+    background-color: lightgreen;
+    height: 25px;
+}
+
+.block span {
+    visibility: hidden;
+}
